@@ -1,0 +1,19 @@
+# Project
+.vscode
+.venv
+tar
+
+# Testing
+tests
+ok
+*.ok*
+construct_check.py
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# System
+.DS_Store
+*.ini
