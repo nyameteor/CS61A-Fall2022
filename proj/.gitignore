@@ -1,0 +1,3 @@
+# proj hog
+hog/*
+!hog/hog.py
