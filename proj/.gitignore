@@ -1,3 +1,7 @@
 # proj hog
 hog/*
 !hog/hog.py
+
+# proj cats
+cats/*
+!cats/cats.py
