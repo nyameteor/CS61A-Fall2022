@@ -5,3 +5,7 @@ hog/*
 # proj cats
 cats/*
 !cats/cats.py
+
+# proj ants
+ants/*
+!ants/ants.py
