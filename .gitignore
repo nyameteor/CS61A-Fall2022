@@ -17,3 +17,6 @@ __pycache__/
 # System
 .DS_Store
 *.ini
+
+# Global
+*.pdf
