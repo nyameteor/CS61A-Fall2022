@@ -212,3 +212,7 @@ def substrings(s):
 >>> list(substrings('tops'))
 ['t', 'to', 'top', 'tops', 'o', 'op', 'ops', 'p', 'ps', 's']
 ```
+
+Example: Partitions
+
+[Demo](demo/example/partitions.py)

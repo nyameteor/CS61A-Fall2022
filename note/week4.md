@@ -248,3 +248,5 @@ def count_partitions(n, m):
 >>> count_partitions(10, 4)
 23
 ```
+
+[Demo](demo/example/partitions.py)
