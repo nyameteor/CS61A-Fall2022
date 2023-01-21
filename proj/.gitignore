@@ -9,3 +9,10 @@ cats/*
 # proj ants
 ants/*
 !ants/ants.py
+
+# proj scheme
+scheme/*
+!scheme/scheme_eval_apply.py
+!scheme/scheme_forms.py
+!scheme/scheme_classes.py
+!scheme/questions.scm
