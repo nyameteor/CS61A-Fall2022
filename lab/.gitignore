@@ -6,3 +6,8 @@ lab07/*
 # lab10
 lab10/*
 !lab10.scm
+
+# lab11
+lab11/*
+!buffer.py
+!scheme_reader.py
