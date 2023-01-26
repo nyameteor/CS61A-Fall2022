@@ -108,9 +108,9 @@ def do_if_form(expressions, env):
     """
     validate_form(expressions, 2, 3)
     if is_scheme_true(scheme_eval(expressions.first, env)):
-        return scheme_eval(expressions.rest.first, env)
+        return scheme_eval(expressions.rest.first, env, True)
     elif len(expressions) == 3:
-        return scheme_eval(expressions.rest.rest.first, env)
+        return scheme_eval(expressions.rest.rest.first, env, True)
 
 
 def do_and_form(expressions, env):
@@ -131,13 +131,14 @@ def do_and_form(expressions, env):
     if expressions is nil:
         return True
     else:
-        val = scheme_eval(expressions.first, env)
-        if is_scheme_false(val):
-            return False
-        elif expressions.rest is nil:
-            return val
+        if expressions.rest is nil:
+            return scheme_eval(expressions.first, env, True)
         else:
-            return do_and_form(expressions.rest, env)
+            val = scheme_eval(expressions.first, env)
+            if is_scheme_false(val):
+                return False
+            else:
+                return do_and_form(expressions.rest, env)
     # END PROBLEM 12
 
 
@@ -159,13 +160,14 @@ def do_or_form(expressions, env):
     if expressions is nil:
         return False
     else:
-        val = scheme_eval(expressions.first, env)
-        if is_scheme_true(val):
-            return val
-        elif expressions.rest is nil:
-            return False
+        if expressions.rest is nil:
+            return scheme_eval(expressions.first, env, True)
         else:
-            return do_or_form(expressions.rest, env)
+            val = scheme_eval(expressions.first, env)
+            if is_scheme_true(val):
+                return val
+            else:
+                return do_or_form(expressions.rest, env)
     # END PROBLEM 12
 
 
