@@ -1,8 +1,10 @@
 (define-macro (when condition exprs)
-  'YOUR-CODE-HERE)
+  `(if ,condition
+       ,(cons 'begin exprs)
+       'okay))
 
 (define-macro (switch expr cases)
-  (cons _________
-        (map (_________ (_________)
-                        (cons _________ (cdr case)))
+  (cons 'cond
+        (map (lambda (case)
+                        (cons `(equal? ,expr ',(car case)) (cdr case)))
              cases)))
