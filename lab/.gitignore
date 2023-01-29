@@ -11,3 +11,7 @@ lab10/*
 lab11/*
 !buffer.py
 !scheme_reader.py
+
+# lab12
+lab12/*
+!lab12/lab12.scm
