@@ -9,3 +9,7 @@ hw08/*
 # hw09
 hw09/*
 !hw09/hw09.scm
+
+# hw10
+hw10/*
+!hw10/hw10.sql
