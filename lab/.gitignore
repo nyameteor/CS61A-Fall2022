@@ -15,3 +15,7 @@ lab11/*
 # lab12
 lab12/*
 !lab12/lab12.scm
+
+# lab13
+lab13/*
+!lab13/lab13.sql
