@@ -50,12 +50,12 @@
 (define (let-to-lambda expr)
   (cond ((atom? expr)
          ; BEGIN OPTIONAL PROBLEM 2
-         'replace-this-line
+         expr
          ; END OPTIONAL PROBLEM 2
          )
         ((quoted? expr)
          ; BEGIN OPTIONAL PROBLEM 2
-         'replace-this-line
+         expr
          ; END OPTIONAL PROBLEM 2
          )
         ((or (lambda? expr)
@@ -64,23 +64,48 @@
                (params (cadr expr))
                (body   (cddr expr)))
            ; BEGIN OPTIONAL PROBLEM 2
-           'replace-this-line
+           (let ((real-params (map (lambda (expr) (let-to-lambda expr)) params))
+                 (real-body (map (lambda (expr) (let-to-lambda expr)) body)))
+               (append `(lambda ,real-params) real-body)
+            )
            ; END OPTIONAL PROBLEM 2
            ))
         ((let? expr)
          (let ((values (cadr expr))
                (body   (cddr expr)))
            ; BEGIN OPTIONAL PROBLEM 2
-           'replace-this-line
+           (let ((combines (zip values)))
+             (let ((formals (car combines))
+                   (args (cadr combines)))
+               (let ((real-formals (map (lambda (expr) (let-to-lambda expr)) formals))
+                     (real-args (map (lambda (expr) (let-to-lambda expr)) args))
+                     (real-body (map (lambda (expr) (let-to-lambda expr)) body)))
+                  (cons (append `(lambda ,real-formals) real-body) real-args)
+                )
+              )
+            )
            ; END OPTIONAL PROBLEM 2
            ))
         (else
          ; BEGIN OPTIONAL PROBLEM 2
-         'replace-this-line
+         (map (lambda (expr) (let-to-lambda expr)) expr)
          ; END OPTIONAL PROBLEM 2
          )))
 
 ; Some utility functions that you may find useful to implement for let-to-lambda
 
 (define (zip pairs)
-  'replace-this-line)
+  (list 
+    (map (lambda (pair) (car pair)) pairs)
+    (map (lambda (pair) (cadr pair)) pairs))
+  )
+
+;; Append list2 elements to list1
+;; scm> (append '(1 2 3) '(4 5 6))
+;; (1 2 3 4 5 6)
+(define (append list1 list2)
+  (if (null? list1)
+    list2
+    (cons (car list1) (append (cdr list1) list2))
+    )
+  )
