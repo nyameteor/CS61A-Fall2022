@@ -35,7 +35,12 @@ def scheme_eval(expr, env, _=None):  # Optional third argument is ignored
     else:
         # BEGIN PROBLEM 3
         procedure = scheme_eval(first, env)
-        args = rest.map(lambda x: scheme_eval(x, env))
+        # BEGIN PROBLEM OPTIONAL_1
+        if isinstance(procedure, MacroProcedure):
+            args = rest
+        # END PROBLEM OPTIONAL_1
+        else:
+            args = rest.map(lambda x: scheme_eval(x, env))
         return scheme_apply(procedure, args, env)
         # END PROBLEM 3
 
@@ -71,6 +76,16 @@ def scheme_apply(procedure, args, env):
         child_frame = env.make_child_frame(procedure.formals, args)
         return eval_all(procedure.body, child_frame)
         # END PROBLEM 11
+    # BEGIN PROBLEM OPTIONAL_1
+    elif isinstance(procedure, MacroProcedure):
+        child_frame = procedure.env.make_child_frame(procedure.formals, args)
+        # get raw body expression by removing outermost bracket
+        raw_body = procedure.body.first 
+        # get real body expression by applying raw arguments
+        real_body = scheme_eval(raw_body, child_frame)
+        # evaluating real body expression in current environment
+        return scheme_eval(real_body, env)
+    # END PROBLEM OPTIONAL_1
     else:
         assert False, "Unexpected procedure: {}".format(procedure)
 

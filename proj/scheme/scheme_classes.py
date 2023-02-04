@@ -132,3 +132,21 @@ class MuProcedure(Procedure):
     def __repr__(self):
         return 'MuProcedure({0}, {1})'.format(
             repr(self.formals), repr(self.body))
+
+class MacroProcedure(Procedure):
+    def __init__(self, formals, body, env):
+        """A procedure with formal parameter list FORMALS (a Scheme list),
+        whose body is the Scheme list BODY, and whose parent environment
+        starts with Frame ENV."""
+        assert isinstance(env, Frame), "env must be of type Frame"
+
+        self.formals = formals
+        self.body = body
+        self.env = env
+
+    def __str__(self):
+        return str(Pair('lambda', Pair(self.formals, self.body)))
+
+    def __repr__(self):
+        return 'MacroProcedure({0}, {1}, {2})'.format(
+            repr(self.formals), repr(self.body), repr(self.env))

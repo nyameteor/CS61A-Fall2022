@@ -240,7 +240,20 @@ def do_define_macro(expressions, env):
     1
     """
     # BEGIN PROBLEM OPTIONAL_1
-    "*** YOUR CODE HERE ***"
+    validate_form(expressions, 2)
+    signature = expressions.first
+    if not scheme_listp(signature):
+        raise SchemeError("non-list: {0}".format(signature))
+
+    symbol = signature.first
+    if not scheme_symbolp(symbol):
+        raise SchemeError("non-symbol: {0}".format(symbol))
+    formals = signature.rest
+    validate_formals(formals)
+
+    body = expressions.rest
+    env.define(symbol, MacroProcedure(formals, body, env))
+    return symbol
     # END PROBLEM OPTIONAL_1
 
 
