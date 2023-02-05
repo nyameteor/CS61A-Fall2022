@@ -1,4 +1,6 @@
-# Week7
+---
+title: Iterators and Generators
+---
 
 ## Implicit Sequences
 

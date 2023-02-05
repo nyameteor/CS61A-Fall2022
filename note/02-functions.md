@@ -1,4 +1,6 @@
-# Week2
+---
+title: Functions
+---
 
 ## Defining New Functions
 
