@@ -16,3 +16,7 @@ scheme/*
 !scheme/scheme_forms.py
 !scheme/scheme_classes.py
 !scheme/questions.scm
+
+# proj scheme_contest
+scheme_contest/*
+!scheme_contest/contest.scm
